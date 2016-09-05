@@ -521,7 +521,6 @@ int main(int argc, char* argv[])
 	memcpy(bOut,XorShell,dwXorShellSize);
 
 	//patch xor shell
-	printf("patch");
 	DWORD dwPatchSize = dwShellHeaderSize+dwFileSize+4;
 	for (int i = 0 ; i < dwXorShellSize; i++)
 	{
@@ -537,7 +536,6 @@ int main(int argc, char* argv[])
 	memcpy(bOut+dwXorShellSize+dwShellHeaderSize,&dwFlag,4);
 	memcpy(bOut+dwXorShellSize+dwShellHeaderSize+4,bFileBuf,dwFileSize);
 
-	printf("test1");
 	for (int i=0;i<(dwPatchSize);i++)
 	{
 		*(bOut+dwXorShellSize+i) = 0x25^bOut[dwXorShellSize+i];//xor key
